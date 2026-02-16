@@ -1,78 +1,218 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>BulkinCup Season 2 | CS2 Tournament</title>
 
-export default function BulkinCupSite() {
-  return (
-    <div className="min-h-screen bg-black text-white font-sans">
-      {/* Hero */}
-      <section className="relative flex items-center justify-center h-screen bg-gradient-to-b from-black via-orange-950 to-black">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center"
-        >
-          <h1 className="text-6xl font-extrabold tracking-wide">
-            BULKIN<span className="text-orange-500">CUP</span>
-          </h1>
-          <p className="mt-4 text-2xl text-gray-300">Season 2 • CS2 Tournament</p>
-          <div className="mt-8 flex gap-4 justify-center">
-            <Button className="bg-orange-500 hover:bg-orange-600">Register Team</Button>
-            <Button variant="outline">Watch Stream</Button>
-          </div>
-        </motion.div>
-      </section>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BulkinCup Season 2 — CS2 tournament. Registration open." />
 
-      {/* About */}
-      <section className="py-20 px-6 max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-6">About the Tournament</h2>
-        <p className="text-gray-300 text-lg leading-relaxed">
-          BulkinCup Season 2 is a competitive Counter-Strike 2 tournament bringing
-          together the strongest teams for intense matches, fair play, and
-          professional-level production.
-        </p>
-      </section>
+  <style>
+    :root {
+      --orange: #ff7a18;
+      --dark: #0b0b0b;
+      --gray: #b5b5b5;
+      --card: #141414;
+    }
 
-      {/* Info Cards */}
-      <section className="py-20 bg-zinc-950">
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto px-6">
-          <Card className="bg-black border-zinc-800">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-semibold mb-2">Format</h3>
-              <p className="text-gray-400">5v5 • Double Elimination • BO3</p>
-            </CardContent>
-          </Card>
-          <Card className="bg-black border-zinc-800">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-semibold mb-2">Prize Pool</h3>
-              <p className="text-gray-400">$1,000+</p>
-            </CardContent>
-          </Card>
-          <Card className="bg-black border-zinc-800">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-semibold mb-2">Date</h3>
-              <p className="text-gray-400">March 2026</p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+    * {
+      box-sizing: border-box;
+    }
 
-      {/* Schedule */}
-      <section className="py-20 px-6 max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-8">Schedule</h2>
-        <ul className="space-y-4 text-gray-300">
-          <li>✔ Registration closes — March 5</li>
-          <li>✔ Group Stage — March 8–10</li>
-          <li>✔ Playoffs — March 15–20</li>
-          <li>✔ Grand Final — March 22</li>
-        </ul>
-      </section>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--dark);
+      color: white;
+      line-height: 1.6;
+    }
 
-      {/* Footer */}
-      <footer className="py-10 bg-black border-t border-zinc-800 text-center text-gray-500">
-        © 2026 BulkinCup • All rights reserved
-      </footer>
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      background:
+        radial-gradient(circle at top, #2b1200, #000);
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      margin: 0;
+      letter-spacing: 2px;
+    }
+
+    .hero h1 span {
+      color: var(--orange);
+    }
+
+    .hero p {
+      font-size: 22px;
+      color: var(--gray);
+      margin: 20px 0 40px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 32px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 2px solid var(--orange);
+      background: none;
+      color: var(--orange);
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn.primary {
+      background: var(--orange);
+      color: black;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(255,122,24,0.4);
+    }
+
+    /* ---------- SECTIONS ---------- */
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section h2 {
+      font-size: 38px;
+      margin-bottom: 20px;
+    }
+
+    section p {
+      color: var(--gray);
+      font-size: 18px;
+      max-width: 800px;
+    }
+
+    /* ---------- CARDS ---------- */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 10px;
+      border: 1px solid #222;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--orange);
+    }
+
+    /* ---------- SCHEDULE ---------- */
+    .schedule li {
+      margin-bottom: 12px;
+      font-size: 18px;
+      color: var(--gray);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      padding: 30px;
+      text-align: center;
+      border-top: 1px solid #222;
+      color: #777;
+      font-size: 14px;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 42px;
+      }
+      .hero p {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <h1>BULKIN<span>CUP</span></h1>
+      <p>Season 2 • Counter-Strike 2 Tournament</p>
+
+      <div class="buttons">
+        <a href="#" class="btn primary">Register Team</a>
+        <a href="#" class="btn">Watch Stream</a>
+      </div>
     </div>
-  );
-}
+  </div>
+
+  <!-- ABOUT -->
+  <section>
+    <h2>About the Tournament</h2>
+    <p>
+      BulkinCup Season 2 is a competitive CS2 tournament for ambitious teams.
+      Fair play, strong opponents and professional organization.
+    </p>
+  </section>
+
+  <!-- INFO -->
+  <section>
+    <div class="cards">
+      <div class="card">
+        <h3>Format</h3>
+        <p>5v5<br>Double Elimination<br>BO3</p>
+      </div>
+
+      <div class="card">
+        <h3>Prize Pool</h3>
+        <p>$1,000+<br>Cash & prizes</p>
+      </div>
+
+      <div class="card">
+        <h3>Date</h3>
+        <p>March 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section>
+    <h2>Schedule</h2>
+    <ul class="schedule">
+      <li>✔ Registration closes — March 5</li>
+      <li>✔ Group Stage — March 8–10</li>
+      <li>✔ Playoffs — March 15–20</li>
+      <li>✔ Grand Final — March 22</li>
+    </ul>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 BulkinCup • All rights reserved
+  </footer>
+
+</body>
+</html>

@@ -914,7 +914,7 @@ function buyPerk(id){if(G.perks[id])return;const p=PERKS.find(x=>x.id===id);if(!
 function maybeEvent(){if(G.activeEvent&&Date.now()<G.eventEnd)return;if(G.activeEvent&&Date.now()>=G.eventEnd){G.activeEvent=null;document.getElementById('evB').classList.add('hidden');recalc();}if(Math.random()<.0025){const ev=EVENTS[Math.floor(Math.random()*EVENTS.length)];G.activeEvent=ev.id;G.eventEnd=Date.now()+ev.dur*1000;document.getElementById('evI').textContent=ev.icon;document.getElementById('evN').textContent=ev.name;document.getElementById('evD').textContent=ev.desc;document.getElementById('evB').classList.remove('hidden');toast('Событие: '+ev.name+'!','gold');recalc();}}
 function updateEventTimer(){if(!G.activeEvent)return;const rem=Math.max(0,Math.floor((G.eventEnd-Date.now())/1000));if(rem===0){G.activeEvent=null;document.getElementById('evB').classList.add('hidden');recalc();return;}const m=Math.floor(rem/60),s=rem%60;document.getElementById('evTm').textContent=m+':'+(s<10?'0':'')+s;}
 function checkColl(){let ch=false;COLLECTION.forEach(col=>{if(!G.collFound[col.id]&&G.total>=col.unlockAt){G.collFound[col.id]=true;ch=true;const nm=MUSH_NAMES[col.idx]||['???'];toast('Новый вид: '+nm[0]+'!','green');}});if(ch)renderColl();}
-const SB_URL='https://tbsdsufftzxwctqjgbhl.supabase.co/';
+const SB_URL='https://tbsdsufftzxwctqjgbhl.supabase.co';
 const SB_KEY='sb_publishable_bmxZqDH-PaF53h_ck1QQEA_BkCEEyNK';
 async function sbFetch(path,opts={}) {
   const headers = {

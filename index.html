@@ -915,7 +915,7 @@ function maybeEvent(){if(G.activeEvent&&Date.now()<G.eventEnd)return;if(G.active
 function updateEventTimer(){if(!G.activeEvent)return;const rem=Math.max(0,Math.floor((G.eventEnd-Date.now())/1000));if(rem===0){G.activeEvent=null;document.getElementById('evB').classList.add('hidden');recalc();return;}const m=Math.floor(rem/60),s=rem%60;document.getElementById('evTm').textContent=m+':'+(s<10?'0':'')+s;}
 function checkColl(){let ch=false;COLLECTION.forEach(col=>{if(!G.collFound[col.id]&&G.total>=col.unlockAt){G.collFound[col.id]=true;ch=true;const nm=MUSH_NAMES[col.idx]||['???'];toast('Новый вид: '+nm[0]+'!','green');}});if(ch)renderColl();}
 const SB_URL='https://tbsdsufftzxwctqjgbhl.supabase.co';
-const SB_KEY='sb_publishable_bmxZqDH-PaF53h_ck1QQEA_BkCEEyNK';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRic2RzdWZmdHp4d2N0cWpnYmhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4Nzc5MzYsImV4cCI6MjA4OTQ1MzkzNn0.UGGGuPLeAnFCGP9Vre6JGSYEkLPWsAbsp-N0_UFsth8';
 async function sbFetch(path,opts={}) {
   const headers = {
     'apikey': SB_KEY,
